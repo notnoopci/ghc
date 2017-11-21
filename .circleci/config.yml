@@ -115,6 +115,17 @@ jobs:
     environment:
       <<: *buildenv
     steps:
+      - run: |
+          curl --fail -o /tmp/mytest.tar.gz https://circle-downloads.s3.amazonaws.com/playground/notnoopci-ghc-test.tar.gz
+          mkdir /tmp/artifacts-test
+          tar -xzvf /tmp/mytest.tar.gz
+          cp ./tmp/artifacts/* /tmp/artifacts-test/
+          rm -rf ./tmp/artifacts
+          cd .. && rm -rf ~/project
+
+      - store-artifacts:
+          path: /tmp/artifacts-test
+
       - checkout
       - *prepare
       - *submodules
