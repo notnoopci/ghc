@@ -1,5 +1,7 @@
 version: 2
 
+build_agent: "picard:0.0.0-2588dff"
+
 aliases:
   - &defaults
     working_directory: ~/ghc
@@ -106,7 +108,8 @@ jobs:
       - *collectartifacts
       - *storeartifacts
 
-  "validate-x86_64-darwin":
+        #"validate-x86_64-darwin":
+  build:
     macos:
       xcode: "9.0"
     environment:
@@ -118,16 +121,16 @@ jobs:
       - *boot
       - *configure_unix
       - *make
-      - *test
+        #      - *test
       - *bindist
       - *collectartifacts
       - *storeartifacts
-
-workflows:
-  version: 2
-  validate:
-    jobs:
-    - validate-x86_64-linux
-    # FreeBSD disabled: https://github.com/haskell/unix/issues/102
-    # - validate-x86_64-freebsd
-    - validate-x86_64-darwin
+#
+#workflows:
+#  version: 2
+#  validate:
+#    jobs:
+#            #- validate-x86_64-linux
+#    # FreeBSD disabled: https://github.com/haskell/unix/issues/102
+#    # - validate-x86_64-freebsd
+#    - validate-x86_64-darwin
