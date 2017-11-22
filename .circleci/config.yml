@@ -1,6 +1,6 @@
 version: 2
 
-build_agent: "picard:0.0.0-86b3588"
+build_agent: "picard:0.0.0-ff11c6c"
 
 aliases:
   - &defaults
