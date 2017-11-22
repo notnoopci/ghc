@@ -1,7 +1,5 @@
 version: 2
 
-build_agent: "picard:0.0.0-c7f9a31"
-
 aliases:
   - &defaults
     working_directory: ~/ghc
